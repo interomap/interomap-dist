@@ -74,12 +74,14 @@ It should look like this:
 
 Click on **Save**.
 
-9. Repeat the steps above for another block named _InteroMap Male_ containing 
-the following HTML code at step 5.
+9. Repeat the steps 1 to 8 for another block named _InteroMap Male_. At step 5, 
+use the following HTML code instead:
 
 ```html
 <iframe id="interomap_tool" src="https://interomap.github.io/interomap-dist/?persona=male" style="width: 100%; height: 70vh;" title="InteroMap Tool - Male"></iframe>
 ```
+
+The JavaScript code at step 8 is the same.
 
 10. To create the question inviting the user to choose a persona, create a new 
 block and a new question inside it. Move this new block _before_ the ones 
