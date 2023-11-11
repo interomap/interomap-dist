@@ -3,7 +3,8 @@
 ## Qualtrics
 
 The following instructions will show you how to embed the InteroMap tool in a
-Qualtrics survey.
+Qualtrics survey. You need to repeat these steps for every question in which 
+you wish to use InteroMap.
 
 Here is an overview of the procedure:
 
@@ -14,6 +15,13 @@ Here is an overview of the procedure:
 3. Create a question inviting the user to choose a persona.
 4. Program your survey to receive data from the InteroMap tool and save it in 
    Qualtrics.
+
+Note: If you use InteroMap multiple times in your survey (e.g. for different 
+questions), you must choose a unique variable name which will hold the 
+InteroMap data for each question separately. In the steps below, we use the 
+variable `question1data` as an example to hold the data of the first question. 
+If we have another question, say question 4, which uses InteroMap too, we must 
+use another variable that we could name `question4data` for example.
 
 ### Steps
 
@@ -39,7 +47,7 @@ background becomes gray. Click on it to enable the question toolbar.
 ![Qualtrics - Question toolbar](images/getting_started_qualtrics_5.png)
 
 5. Insert the following HTML code to embed the InteroMap tool with the 
-pre-selected _female_ persona.
+pre-selected _female_ persona and the `question1data` variable.
 
 ```html
 <iframe id="interomap_tool" src="https://interomap.github.io/interomap-dist/?persona=female" style="width: 100%; height: 70vh;" title="InteroMap Tool - Female"></iframe>
@@ -62,11 +70,13 @@ Qualtrics.SurveyEngine.addOnReady(function()
 {
 	window.addEventListener('message', function(event) {
 		if (event.data.event === "interomap_data") {
-			Qualtrics.SurveyEngine.setEmbeddedData("InteroMapData", event.data.output);
+			Qualtrics.SurveyEngine.setEmbeddedData("question1data", event.data.output);
 		}
 	})
 });
 ```
+
+Note: Replace `question1data` with your variable name for this question.
 
 It should look like this:
 
@@ -81,7 +91,7 @@ use the following HTML code instead:
 <iframe id="interomap_tool" src="https://interomap.github.io/interomap-dist/?persona=male" style="width: 100%; height: 70vh;" title="InteroMap Tool - Male"></iframe>
 ```
 
-The JavaScript code at step 8 is the same.
+Use the same JavaScript code as in step 8 here.
 
 10. To create the question inviting the user to choose a persona, create a new 
 block and a new question inside it. Move this new block _before_ the ones 
@@ -104,9 +114,12 @@ containing the InteroMap tool. Design it to your liking. Here is an example :
 ![Qualtrics - Survey flow new element](images/getting_started_qualtrics_12.png)
 
 14. Click on **Create New Field or Choose From Dropdown...** and type 
-`InteroMapData`. Click on **Apply** to save your changes.
+your variable name for this question (`question1data` in our example). Click on 
+**Apply** to save your changes.
 
 ![Qualtrics - Survey flow apply](images/getting_started_qualtrics_13.png)
 
+Repeat this step as many times as you have questions using InteroMap. For example, 
+if you are using InteroMap in 3 questions, you should create 3 distinct variables.
 
 :tada: You are done embedding the InteroMap tool in your survey.
