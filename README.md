@@ -47,10 +47,17 @@ background becomes gray. Click on it to enable the question toolbar.
 ![Qualtrics - Question toolbar](images/getting_started_qualtrics_5.png)
 
 5. Insert the following HTML code to embed the InteroMap tool with the 
-pre-selected _female_ persona and the `question1data` variable.
+pre-selected _female_ persona. Replace `<YOUR_VARIABLE>` in the code to
+a variable name of your choosing. Use only alphanumeric ASCII characters
+and always start with a letter. Do not use diacritics.
+
+Examples of valid variable names: `control`, `happy`, `emotion1`,...
+
+Replace `lang=en` with `lang=fr` if you wish to show the tool in French.
+Only English and French are available currently.
 
 ```html
-<iframe id="interomap_tool" src="https://interomap.github.io/interomap-dist/?persona=female" style="width: 100%; height: 70vh;" title="InteroMap Tool - Female"></iframe>
+<iframe id="interomap_tool" src="https://interomap.github.io/interomap-dist/?lang=en&persona=female&variable=<YOUR_VARIABLE>" style="width: 100%; height: 100vh;" title="InteroMap Tool - Female"></iframe>
 ```
 
 6. Click outside the text area to select the question panel.
@@ -63,33 +70,23 @@ the bottom of the _Edit question_ panel, click on **JavaScript**.
 ![Qualtrics - JavaScript](images/getting_started_qualtrics_7.png)
 
 8. A new popup named _Edit Question JavaScript_ appears. Copy the following 
-code inside it, replacing the default content.
+code inside the text area.
 
 ```javascript
 Qualtrics.SurveyEngine.addOnReady(function()
 {
 	window.addEventListener('message', function(event) {
 		if (event.data.event === "interomap_data") {
-			Qualtrics.SurveyEngine.setEmbeddedData("question1data", event.data.output);
+			Qualtrics.SurveyEngine.setEmbeddedData(event.data.variable, event.data.output);
 		}
 	})
 });
 ```
 
-Note: Replace `question1data` with your variable name for this question.
-
-It should look like this:
-
-![Qualtrics - JavaScript code](images/getting_started_qualtrics_8.png)
-
 Click on **Save**.
 
 9. Repeat the steps 1 to 8 for another block named _InteroMap Male_. At step 5, 
-use the following HTML code instead:
-
-```html
-<iframe id="interomap_tool" src="https://interomap.github.io/interomap-dist/?persona=male" style="width: 100%; height: 70vh;" title="InteroMap Tool - Male"></iframe>
-```
+replace `persona=female` with `persona=male` in the code.
 
 Use the same JavaScript code as in step 8 here.
 
@@ -114,8 +111,9 @@ containing the InteroMap tool. Design it to your liking. Here is an example :
 ![Qualtrics - Survey flow new element](images/getting_started_qualtrics_12.png)
 
 14. Click on **Create New Field or Choose From Dropdown...** and type 
-your variable name for this question (`question1data` in our example). Click on 
-**Apply** to save your changes.
+the variable name you chose at step 5 above. **Important**: the variable name
+MUST be transcribed EXACTLY as in the code at step 5 (beware of the letter case).
+Click on **Apply** to save your changes.
 
 ![Qualtrics - Survey flow apply](images/getting_started_qualtrics_13.png)
 
