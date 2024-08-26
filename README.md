@@ -25,28 +25,49 @@ use another variable that we could name `question4data` for example.
 
 ### Steps
 
-1. Add a new block to your survey by clicking on **Add Block** and to name it 
+1. Click on one of the first questions of your survey. On the left, at 
+the bottom of the _Edit question_ panel, click on **JavaScript**.
+
+![Qualtrics - JavaScript](images/getting_started_qualtrics_7.png)
+
+2. A new popup named _Edit Question JavaScript_ appears. Copy the following 
+code inside the text area.
+
+```javascript
+Qualtrics.SurveyEngine.addOnReady(function()
+{
+ window.addEventListener('message', function(event) {
+  if (event.data.event === "interomap_data") {
+   Qualtrics.SurveyEngine.setEmbeddedData(event.data.variable, event.data.output);
+  }
+ })
+});
+```
+
+Click on **Save**.
+
+3. Add a new block to your survey by clicking on **Add Block** and to name it 
 _InteroMap Female_.
 
 ![Qualtrics - Add Block](images/getting_started_qualtrics_1.png)
 
-2. Inside this block, click on **Add new question** and select 
+4. Inside this block, click on **Add new question** and select 
 **Text / Graphic**
 
 ![Qualtrics - Add new question](images/getting_started_qualtrics_2.png)
 
-3. A new question will appear inside the block. When you hover it, its 
+5. A new question will appear inside the block. When you hover it, its 
 background becomes gray. Click on it to enable the question toolbar.
 
 ![Qualtrics - Question hover](images/getting_started_qualtrics_3.png)
 
 ![Qualtrics - Question toolbar](images/getting_started_qualtrics_4.png)
 
-4. Click on the **HTML View** tab. You should now be able to insert HTML code.
+6. Click on the **HTML View** tab. You should now be able to insert HTML code.
 
 ![Qualtrics - Question toolbar](images/getting_started_qualtrics_5.png)
 
-5. Insert the following HTML code to embed the InteroMap tool with the 
+7. Insert the following HTML code to embed the InteroMap tool with the 
 pre-selected _female_ persona. Replace `<YOUR_VARIABLE>` in the code to
 a variable name of your choosing. Use only alphanumeric ASCII characters
 and always start with a letter. Do not use diacritics.
@@ -60,35 +81,13 @@ Only English and French are available currently.
 <iframe id="interomap_tool" src="https://interomap.github.io/interomap-dist/?lang=en&persona=female&variable=<YOUR_VARIABLE>" style="width: 100%; height: 100vh;" title="InteroMap Tool - Female"></iframe>
 ```
 
-6. Click outside the text area to select the question panel.
+8. Click outside the text area to select the question panel. The InteroMap tool should now appear inside the question.
 
 ![Qualtrics - Select question](images/getting_started_qualtrics_6.png)
 
-7. The InteroMap tool should now appear inside the question. On the left, at 
-the bottom of the _Edit question_ panel, click on **JavaScript**.
 
-![Qualtrics - JavaScript](images/getting_started_qualtrics_7.png)
-
-8. A new popup named _Edit Question JavaScript_ appears. Copy the following 
-code inside the text area.
-
-```javascript
-Qualtrics.SurveyEngine.addOnReady(function()
-{
-	window.addEventListener('message', function(event) {
-		if (event.data.event === "interomap_data") {
-			Qualtrics.SurveyEngine.setEmbeddedData(event.data.variable, event.data.output);
-		}
-	})
-});
-```
-
-Click on **Save**.
-
-9. Repeat the steps 1 to 8 for another block named _InteroMap Male_. At step 5, 
+9. Repeat the steps 3 to 8 for another block named _InteroMap Male_. At step 7, 
 replace `persona=female` with `persona=male` in the code.
-
-Use the same JavaScript code as in step 8 here.
 
 10. To create the question inviting the user to choose a persona, create a new 
 block and a new question inside it. Move this new block _before_ the ones 
@@ -112,7 +111,7 @@ containing the InteroMap tool. Design it to your liking. Here is an example :
 
 14. Click on **Create New Field or Choose From Dropdown...** and type 
 the variable name you chose at step 5 above. **Important**: the variable name
-MUST be transcribed EXACTLY as in the code at step 5 (beware of the letter case).
+MUST be transcribed EXACTLY as in the code at step 7 (beware of the letter case).
 Click on **Apply** to save your changes.
 
 ![Qualtrics - Survey flow apply](images/getting_started_qualtrics_13.png)
