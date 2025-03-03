@@ -25,8 +25,9 @@ use another variable that we could name `question4data` for example.
 
 ### Steps
 
-1. Click on one of the first questions of your survey. On the left, at 
-the bottom of the _Edit question_ panel, click on **JavaScript**.
+1. Click on one of the first questions of your survey (e.g., the welcome page). On the left, at 
+the bottom of the _Edit question_ panel, click on **JavaScript**. Please don't insert this code
+in a question/block that redirects participants to one or other branch. 
 
 ![Qualtrics - JavaScript](images/getting_started_qualtrics_7.png)
 
@@ -119,4 +120,28 @@ Click on **Apply** to save your changes.
 Repeat this step as many times as you have questions using InteroMap. For example, 
 if you are using InteroMap in 3 questions, you should create 3 distinct variables.
 
+15. To have a good format, we advise you to change the "style" of your Qualtrics.
+Here are the steps: (1) Go to “Look and feel”; (2) Click on “Style”; (3) In custom CSS,
+copy the following code:
+
+```css
+.SkinInner{
+width: 100% !important;
+}
+``` 
+16. To make sure that participants understand the task, we use detailed instructions
+by illustrating the different steps that they should follow. We also use a control
+task that requests them to color specific regions with specific colors.
+
 :tada: You are done embedding the InteroMap tool in your survey.
+
+Questions?
+Please contact olivier.desmedt@uclouvain.be.
+
+How to visualize and analyze data?
+Another webpage exists to visualize individual and aggregated maps:
+https://interomap.github.io/processing-tool/. An instruction page will soon be published.
+
+NB: Note that some old versions of some web browsers may be incompatible with the
+tool, although it is rare. If you use such versions, please pretest the tool and
+visualize the data. If you conduct an online study, visualize each individual map.
