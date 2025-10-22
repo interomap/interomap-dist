@@ -140,7 +140,8 @@ Please contact olivier.desmedt@uclouvain.be.
 
 How to visualize and analyze data?
 Another webpage exists to visualize individual and aggregated maps:
-https://interomap.github.io/processing-tool/. An instruction page will soon be published.
+https://interomap.github.io/processing-tool/. The instruction page is available 
+here: https://github.com/interomap/processing-tool.
 
 NB: Note that some old versions of some web browsers may be incompatible with the
 tool, although it is rare. If you use such versions, please pretest the tool and
