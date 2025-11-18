@@ -1,5 +1,10 @@
 # Getting started
 
+## Associated publication
+Please cite:
+Desmedt, O., Maurage, P., Leganes-Fonteneau, M., Billaux, P., & Billieux, J. (2025).
+InteroMap: A Novel Tool to Map the Phenomenology of Bodily Sensations.
+
 ## Qualtrics
 
 The following instructions will show you how to embed the InteroMap tool in a
